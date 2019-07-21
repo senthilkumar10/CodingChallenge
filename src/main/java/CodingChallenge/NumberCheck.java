@@ -1,6 +1,8 @@
 package CodingChallenge;
 
-import java.sql.SQLOutput;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NumberCheck {
 
@@ -18,17 +20,48 @@ public class NumberCheck {
 
     public static void main(String args[]){
 
-    numberCheck(5);
+        int checkNbr = 8;
 
+         List<String> results = new ArrayList<String>();
+         StringBuffer sb = new StringBuffer();
+
+        for(int i=1;i<checkNbr;i++){
+            sb.append(isEven(checkNbr)).append(",").append(isPrime(checkNbr)).append(",").append(isMulipleOfTen(checkNbr)).append("\n");
+            results.add(sb.toString());
+        }
+
+        System.out.println(results);
     }
 
 
-    private static void numberCheck(int nbr){
-        if(nbr>1){
-            for(int i=1;i<=nbr;i++){
-                System.out.println(i);
+
+    private static boolean isPrime(int n){
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i < Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
             }
         }
+        return true;
+    }
+
+
+
+
+    private static boolean isEven(int nbr){
+        if(nbr>1){
+            return (nbr%2==0)?true :false;
+        }
+        return false;
+    }
+
+    private static boolean isMulipleOfTen(int nbr){
+        if(nbr>1){
+            return (nbr%10==0)?true   :false;
+        }
+        return false;
     }
 
 
