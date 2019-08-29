@@ -16,39 +16,21 @@ public class ProductOfOtherIndex {
     public static void main(String[] args) {
 
         int[] nbrs = {4,6,9,2,3};
-        List<Integer> productofOtherIndexes = new ArrayList<Integer>();
+        int[] product = new int[nbrs.length];
         int temp=1;
 
         if(nbrs.length>1){
-
             for(int i=0;i<nbrs.length;i++){
-                if(i==0){
-                    for(int j=1;j<nbrs.length;j++){
-                        temp= temp*nbrs[j];
-                    }
-                    productofOtherIndexes.add(temp);
-                    temp=1;
-                }else{
-                    for(int k=0;k<i;k++){
-                        temp= temp*nbrs[k];
-                    }
-
-                    for(int l=i+1;l<nbrs.length;l++){
-                        temp= temp*nbrs[l];
-                    }
-                    productofOtherIndexes.add(temp);
-                    temp=1;
-                }
+                temp = temp*nbrs[i];
             }
-            System.out.println(Arrays.toString(nbrs));
-            System.out.println(productofOtherIndexes);
+
+            for(int j=0;j<nbrs.length;j++){
+                product[j] = temp/nbrs[j];
+            }
+
+            System.out.println(Arrays.toString(product));
         }else{
             System.out.println("The array should contains more than two numbers to compute product");
         }
-
-
-
     }
-
-
 }
